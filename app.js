@@ -1,22 +1,4 @@
-/* eslint-disable no-dupe-else-if */
-/* eslint-disable no-mixed-operators */
-/* eslint-disable line-comment-position */
-/* eslint-disable no-inline-comments */
-/* eslint-disable no-shadow */
-/* eslint-disable max-len */
-/* eslint-disable max-depth */
-/* eslint-disable no-empty */
-/* eslint-disable id-length */
-/* eslint-disable no-plusplus */
-/* eslint-disable no-magic-numbers */
-/* eslint-disable eqeqeq */
-/* eslint-disable max-statements */
-/* eslint-disable no-undef */
-/* eslint-disable no-console */
-/* eslint-disable no-use-before-define */
-/* eslint-disable func-style */
-/* eslint-disable one-var */
-/* eslint-disable require-jsdoc */
+
 class Celula {
 
     constructor (life, neighbors) {
@@ -191,10 +173,10 @@ function iteration (ParamarrayCells) {
                     } catch (e) {
 
                     }
-
                 }
 
             }
+            console.log('Vivo/muerto: '+ ParamarrayCells[x][y].getLife() +". Vecino vivos: " + neighbors + ". Fila: " + x + ". Columna: " + y);
             ParamarrayCells[x][y].setNeighbors(neighbors);
             rulesLife(
                 ParamarrayCells[x][y],
