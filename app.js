@@ -33,7 +33,7 @@ class Celula {
 
     getNumCell () {
 
-        if (this.life == 0) {
+        if (this.life === 0) {
 
             return ".";
 
@@ -49,6 +49,19 @@ class Celula {
         return this.neighbors;
 
     }
+
+}
+
+function getCell (cell) {
+
+    if (cell === 0) {
+
+        return ".";
+
+    }
+
+    return "*";
+
 
 }
 
@@ -80,6 +93,10 @@ function getNewArray () {
 }
 
 play();
+
+function numCell(){
+    
+}
 
 function play () {
 
@@ -173,10 +190,11 @@ function iteration (ParamarrayCells) {
                     } catch (e) {
 
                     }
+
                 }
 
             }
-            console.log('Vivo/muerto: '+ ParamarrayCells[x][y].getLife() +". Vecino vivos: " + neighbors + ". Fila: " + x + ". Columna: " + y);
+            //console.log(`Vivo/muerto: ${ParamarrayCells[x][y].getLife()}. Vecino vivos: ${neighbors}. Fila: ${x}. Columna: ${y}`);
             ParamarrayCells[x][y].setNeighbors(neighbors);
             rulesLife(
                 ParamarrayCells[x][y],
@@ -209,9 +227,26 @@ function rulesLife (cell, x, y) {
 
         newArray[x][y].setLife(1); // Reproducción
 
-    } else {
+    }
 
-        newArray[x][y] = cell;
+}
+
+function rulesLifes(cell, neighbors){
+    if (cell == 1 && neighbors < 2) {
+
+        return 0; // Soledad
+
+    } else if (cell == 1 && neighbors == 2 || neighbors == 3) {
+
+        return 1;
+
+    } else if (cell == 1 && neighbors > 3) {
+
+        return 0; // Sobrepoblación
+
+    } else if (cell == 0 && neighbors == 3) {
+
+        return 1; // Reproducción
 
     }
 
@@ -237,16 +272,19 @@ function showResult (array) {
 }
 
 
-// module.exports = {
+module.exports = {
 
-//     getArrayCell,
-//     getNewArray,
-//     getNumX,
-//     getNumY,
-//     initGame,
-//     iteration,
-//     rulesLife,
-//     showResult
+    Celula,
+    getArrayCell,
+    getCell,
+    getNewArray,
+    getNumX,
+    getNumY,
+    initGame,
+    iteration,
+    rulesLife,
+    rulesLifes,
+    showResult
 
-// };
+};
 
