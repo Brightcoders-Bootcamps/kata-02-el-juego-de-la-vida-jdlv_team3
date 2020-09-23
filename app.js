@@ -102,7 +102,6 @@ function initGame () {
         resutArrayCell += "\n";
     }
     newArray = arrayCells;    
-    console.log(resutArrayCell);
     iteration(arrayCells);
     return resutArrayCell;
 }
@@ -114,11 +113,11 @@ function iteration (ParamarrayCells) {
             for (let i = -1; i <= 1; i++) {
                 for (let j = -1; j <= 1; j++) {
                     try {
+                        
                         if (ParamarrayCells[x + i][y + j].getLife() == 1) {
-                            if (ParamarrayCells[x][y].getLife() == 1 && i == 0 && j == 0) {
-                            } else {
-                                neighbors++;
-                            }
+
+                            ParamarrayCells[x][y].getLife() == 1 && i == 0 && j == 0 ? neighbors : neighbors++;
+                            
                         }
                     } catch (e) {
                     }
@@ -172,7 +171,6 @@ function showResult (array) {
 
 module.exports = {
 
-    Celula,
     getArrayCell,
     getCell,
     getNewArray,
