@@ -45,7 +45,7 @@ function getCell (cell) {
 
 const numX = 4,
     numY = 8;
-let arrayCells = "",
+let arrayCells = [],
     cell = "",
     resutArrayCell = "",
     resutNewArray = "";
@@ -67,10 +67,10 @@ function getNewArray () {
 play();
 
 function play () {
-    const resultGame = initGame();
+    let resultGame = initGame();
     console.log(resultGame);
     iteration(arrayCells);
-    const showRes = showResult(newArray);
+    let showRes = showResult(newArray);
     console.log(showRes);
 }
 
@@ -101,12 +101,43 @@ function initGame () {
         }
         resutArrayCell += "\n";
     }
-    newArray = arrayCells;    
+    newArray = arrayCells;
     iteration(arrayCells);
     return resutArrayCell;
 }
 
 function iteration (ParamarrayCells) {
+    /*let arri = [-1, 0, 1];
+    let arrj = [-1, 0, 1];
+    let constX = 0, constY = 0;
+
+    ParamarrayCells.forEach(function(x,indexX){
+        x.forEach(function(y,indexY){
+            let neighbors = 0;
+            arri.forEach(function(i){
+                arrj.forEach(function(j){
+                    try {
+                        if (y.getLife() == 1) {
+                            if(y.getLife() == 1 && i == 0 && j == 0){
+
+                            }else{
+                                neighbors++;
+                            }
+                        }
+                    } catch (e) {
+                    }
+                });
+            });
+            debugger;
+            y.setNeighbors(neighbors);
+            rulesLife(
+                y,
+                indexX,
+                indexY
+            );
+        });
+    });*/
+    
     for (let x = 0; x < ParamarrayCells.length; x++) {
         for (let y = 0; y < ParamarrayCells[x].length; y++) {
             let neighbors = 0;
@@ -134,13 +165,13 @@ function iteration (ParamarrayCells) {
 }
 
 function rulesLife (cell, x, y) {
-    if (cell.getLife() == 1 && cell.getNeighbors() < 2) {
+    if (cell.getLife() === 1 && cell.getNeighbors() < 2) {
         newArray[x][y].setLife(0); // Soledad
-    } else if (cell.getLife() == 1 && cell.getNeighbors() == 2 || cell.getNeighbors() == 3) {
+    } else if (cell.getLife() === 1 && cell.getNeighbors() === 2 || cell.getNeighbors() === 3) {
         newArray[x][y].setLife(1);
-    } else if (cell.getLife() == 1 && cell.getNeighbors() > 3) {
+    } else if (cell.getLife() === 1 && cell.getNeighbors() > 3) {
         newArray[x][y].setLife(0); // Sobrepoblación
-    } else if (cell.getLife() == 0 && cell.getNeighbors() == 3) {
+    } else if (cell.getLife() === 0 && cell.getNeighbors() === 3) {
         newArray[x][y].setLife(1); // Reproducción
     }
 }
