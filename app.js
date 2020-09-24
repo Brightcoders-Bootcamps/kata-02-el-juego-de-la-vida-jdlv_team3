@@ -107,8 +107,7 @@ function initGame () {
 }
 
 function iteration (ParamarrayCells) {
-    let x = 0
-    while(x < ParamarrayCells.length){
+    for (let x = 0; x < ParamarrayCells.length; x++) {
         for (let y = 0; y < ParamarrayCells[x].length; y++) {
             let neighbors = 0;
             for (let i = -1; i <= 1; i++) {
@@ -131,7 +130,6 @@ function iteration (ParamarrayCells) {
                 y
             );
         }
-        x++;
     }
 }
 
